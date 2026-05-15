@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <script>
+      (function() {
+        try {
+          const originalFetch = window.fetch;
+          let currentFetch = originalFetch;
+          const descriptor = Object.getOwnPropertyDescriptor(window, 'fetch') || 
+                            Object.getOwnPropertyDescriptor(Object.getPrototypeOf(window), 'fetch');
+          
+          if (descriptor && !descriptor.configurable) {
+            console.warn('window.fetch is not configurable, cannot polyfill setter.');
+            return;
+          }
+
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get: function() {
+              return currentFetch;
+            },
+            set: function(v) {
+              currentFetch = v;
+            }
+          });
+        } catch (e) {
+          // Ignore errors during polyfill
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StrongOTT - IPTV Premium 4K/8K | #1 Streaming Service 2026</title>
+    <meta name="description" content="Découvrez le meilleur de l'IPTV avec StrongOTT. Plus de 20 000 chaînes en direct et 60 000 VOD en qualité 4K/8K Ultra HD. Zéro buffering, support 24/7." />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="StrongOTT - IPTV Premium 4K/8K | #1 Streaming Service" />
+    <meta property="og:description" content="Découvrez le meilleur de l'IPTV avec StrongOTT. Plus de 20 000 chaînes en direct et 60 000 VOD en qualité 4K/8K Ultra HD." />
+    <meta property="og:url" content="https://strongott.com/" />
+    <meta property="og:site_name" content="StrongOTT" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=1200" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="StrongOTT - IPTV Premium 4K/8K" />
+    <meta name="twitter:description" content="Plus de 20 000 chaînes en direct et 60 000 VOD en qualité 4K/8K Ultra HD." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=1200" />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="canonical" href="https://strongott.com/" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

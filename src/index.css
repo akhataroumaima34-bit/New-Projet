@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+@utility animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white antialiased selection:bg-blue-500 selection:text-white;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 border-2 border-zinc-950 rounded-full hover:bg-zinc-700 transition-colors;
+  }
+}
+
+.markdown-body h1 {
+  @apply text-4xl font-black uppercase tracking-tighter mb-10 text-white;
+}
+
+.markdown-body h2 {
+  @apply text-2xl font-bold uppercase tracking-tight mt-16 mb-8 text-white border-l-4 border-blue-500 pl-4;
+}
+
+.markdown-body h3 {
+  @apply text-xl font-bold uppercase tracking-tight mt-10 mb-6 text-white/90;
+}
+
+.markdown-body p {
+  @apply text-lg text-white/60 leading-relaxed mb-8;
+}
+
+.markdown-body ul, .markdown-body ol {
+  @apply mb-10 ml-6 space-y-4;
+}
+
+.markdown-body li {
+  @apply text-white/60 leading-relaxed list-disc marker:text-blue-500;
+}
+
+.markdown-body blockquote {
+  @apply border-y border-white/10 py-10 my-16 italic text-2xl text-white/80 font-light text-center;
+}
+
+.markdown-body a {
+  @apply text-blue-500 underline decoration-blue-500/30 hover:decoration-blue-500 transition-all;
+}
